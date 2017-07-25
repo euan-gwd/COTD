@@ -25,10 +25,10 @@ class App extends Component {
         state: 'fishes'
       });
 
-    const localStorageRef = localStorage.getItem(`order-${this.props.params.storeId}`);
-    if (localStorageRef) {
+    const sessionStorageRef = sessionStorage.getItem(`order-${this.props.params.storeId}`);
+    if (sessionStorageRef) {
       this.setState({
-        order: JSON.parse(localStorageRef)
+        order: JSON.parse(sessionStorageRef)
       });
     }
   }
@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    localStorage.setItem(`order-${this.props.params.storeId}`, JSON.stringify(nextState.order));
+    sessionStorage.setItem(`order-${this.props.params.storeId}`, JSON.stringify(nextState.order));
   }
 
 
