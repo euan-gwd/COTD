@@ -71,7 +71,7 @@ class App extends Component {
 
   removeFromOrder = (key) => {
     const order = { ...this.state.order };
-    delete order[key];
+    (order[key] > 1) ? order[key] = order[key] - 1 : delete order[key];
     this.setState({ order });
   };
 
