@@ -1,3 +1,4 @@
+/*eslint no-unused-expressions: ["error", { "allowTernary": true }]*/
 import React, { Component } from 'react';
 import Header from './Header';
 import Order from './Order';
@@ -71,7 +72,7 @@ class App extends Component {
 
   removeFromOrder = (key) => {
     const order = { ...this.state.order };
-    (order[key] > 1) ? order[key] = order[key] - 1 : delete order[key];
+    order[key] > 1 ? order[key] -= 1 : delete order[key];
     this.setState({ order });
   };
 
