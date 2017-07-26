@@ -9,10 +9,6 @@ import base from '../base';
 class App extends Component {
   constructor() {
     super();
-    this.addFish = this.addFish.bind(this);
-    this.updateFish = this.updateFish.bind(this);
-    this.loadSamples = this.loadSamples.bind(this);
-    this.addToOrder = this.addToOrder.bind(this);
     this.state = {
       fishes: {},
       order: {}
@@ -42,7 +38,7 @@ class App extends Component {
     sessionStorage.setItem(`order-${this.props.params.storeId}`, JSON.stringify(nextState.order));
   }
 
-  addFish(fish) {
+  addFish = (fish) => {
     //update state
     const fishes = { ...this.state.fishes };
     const timestamp = Date.now();
@@ -51,17 +47,17 @@ class App extends Component {
     this.setState({ fishes });
   }
 
-  updateFish(key, updatedFish) {
+  updateFish = (key, updatedFish) => {
     const fishes = { ...this.state.fishes };
     fishes[key] = updatedFish;
     this.setState({ fishes });
   }
 
-  loadSamples() {
+  loadSamples = () => {
     this.setState({ fishes: sampleFishes });
   }
 
-  addToOrder(key) {
+  addToOrder = (key) => {
     const order = { ...this.state.order };
     order[key] = order[key] + 1 || 1;
     this.setState({ order });
