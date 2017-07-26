@@ -15,7 +15,8 @@ class Order extends React.Component {
         <span className="price">{formatPrice(count * fish.price)}</span>
       </li>
     )
-  }
+  };
+  
   render() {
     const orderIds = Object.keys(this.props.order);
     const total = orderIds.reduce((prevTotal, key) => {

@@ -45,23 +45,29 @@ class App extends Component {
     fishes[`fish-${timestamp}`] = fish;
     //set state
     this.setState({ fishes });
-  }
+  };
 
   updateFish = (key, updatedFish) => {
     const fishes = { ...this.state.fishes };
     fishes[key] = updatedFish;
     this.setState({ fishes });
-  }
+  };
+
+  removeFish = (key) => {
+    const fishes = { ...this.state.fishes };
+    fishes[key] = null;
+    this.setState({ fishes });
+  };
 
   loadSamples = () => {
     this.setState({ fishes: sampleFishes });
-  }
+  };
 
   addToOrder = (key) => {
     const order = { ...this.state.order };
     order[key] = order[key] + 1 || 1;
     this.setState({ order });
-  }
+  };
 
   render() {
     return (
@@ -77,7 +83,7 @@ class App extends Component {
           </ul>
         </div>
         <Order fishes={this.state.fishes} order={this.state.order} params={this.props.params} />
-        <Inventory fishes={this.state.fishes} addFish={this.addFish} updateFish={this.updateFish} loadSamples={this.loadSamples} />
+        <Inventory fishes={this.state.fishes} addFish={this.addFish} updateFish={this.updateFish} removeFish={this.removeFish} loadSamples={this.loadSamples} />
       </div>
     );
   }
